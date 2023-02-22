@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Player Info Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+			padding: 20px;
+		}
+
+		h1 {
+			margin-top: 0;
+			text-align: center;
+			color: #333;
+		}
+
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		button {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #444;
+		}
+
+		table {
+			margin-top: 20px;
+			border-collapse: collapse;
+			width: 100%;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			text-align: center;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			text-align: center;
+			border: 1px solid #ccc;
+		}
+
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Player Info Form</h1>
+	<form>
+		<label for="player-id">Player ID:</label>
+		<input type="text" id="player-id">
+		<br><br>
+		<label for="player-name">Player Name:</label>
+		<input type="text" id="player-name">
+		<br><br>
+		<label for="player-runs">Player Runs:</label>
+		<input type="text" id="player-runs">
+		<br><br>
+
+		<button type="button" onclick="addPlayer()">Add Player Data</button>
+		<button type="button" onclick="removePlayers()">delete Player</button>
+	</form>
+	<br><br>
+	<table id="player-table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Runs</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script>
+		var addPlayer = () => {
+			var id = document.getElementById("player-id").value; 
+			var name = document.getElementById("player-name").value; 
+			var runs = document.getElementById("player-runs").value; 
+			
+			var table = document.getElementById("player-table")
+			var row = table.insertRow(); 
+			
+			var cell1 = row.insertCell(0); 
+			var cell2 = row.insertCell(1); 
+			var cell3 = row.insertCell(2); 
+			var cell4 = row.insertCell(3); 
+			
+			cell1.innerHTML = id; 
+			cell2.innerHTML = name; 
+			cell3.innerHTML = runs; 
+			cell4.innerHTML = "<input type=checkbox value=id />"
+		}
+		var removePlayers = () => {
+			var table = document.getElementById("player-table")
+			for (var i = 1; i < table.rows.length; i++) { 
+				var checkbox = table.rows[i].cells[3].querySelector("input[type=checkbox]"); 
+				if (checkbox.checked) { 
+					table.deleteRow(i); 
+					i--; 
+				} 
+			}
+		} 
+	</script>
+</body>
+
+</html>
