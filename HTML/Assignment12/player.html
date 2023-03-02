@@ -93,7 +93,7 @@
 		<br><br>
 
 		<button type="button" onclick="addPlayer()">Add Player Data</button>
-		<button type="button" onclick="removePlayers()">delete Player</button>
+		<button type="button" onclick="removePlayers()">Delete Player</button>
 	</form>
 	<br><br>
 	<table id="player-table">
@@ -115,7 +115,7 @@
 			var name = document.getElementById("player-name").value; 
 			var runs = document.getElementById("player-runs").value; 
 			
-			var table = document.getElementById("player-table")
+			var table = document.getElementById("player-table");
 			var row = table.insertRow(); 
 			
 			var cell1 = row.insertCell(0); 
@@ -128,8 +128,10 @@
 			cell3.innerHTML = runs; 
 			cell4.innerHTML = "<input type=checkbox value=id />"
 		}
+
 		var removePlayers = () => {
-			var table = document.getElementById("player-table")
+			var table = document.getElementById("player-table");
+			
 			for (var i = 1; i < table.rows.length; i++) { 
 				var checkbox = table.rows[i].cells[3].querySelector("input[type=checkbox]"); 
 				if (checkbox.checked) { 
